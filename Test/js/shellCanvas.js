@@ -45,9 +45,9 @@ function crazyLines () {
 
     width -= .04
     height -= .07
-    if (r<255) r+=.07
-    if (g<255) g+=.00
-    if (b<255) b+=.00
+    if (r<255) r+=.3
+    if (g<255) g+=.05
+    if (b<255) b+=.1
 
     context.strokeStyle = `rgb(${r},${g},${b})`
     x = Math.round(Math.random()*width)
