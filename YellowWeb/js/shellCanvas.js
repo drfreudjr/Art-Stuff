@@ -34,17 +34,28 @@ function drawScreen() {  // wrapper that gets called on resize event
 
     //  //  // Enter Page Specific Code here
 
-    r = 255
-    g = 255
-    b = 255
+context.fillStyle = "blue"
+context.fillRect(0,0,innerWidth,innerHeight)
 
-interval = Math.round(window.innerWidth)/70
+
+document.body.style.backgroundColor = 'blue'
+
+    r = 0
+    g = 0
+    b = 0
+
+interval = Math.round(window.innerWidth)/350
 x = 0
 
 function draw () {
- x +=interval
-    if (x<innerWidth) {
+     b -= 2*g
+     g -= 10/b
+     r -= 2
 
+     document.body.style.backgroundColor = `rgb(${r},${g+b},${b})`
+ x +=interval
+    if (x<2000) {
+    for (i=0;i<1;++i) {
        context.strokeStyle = `rgb(${r},${g},${b})`
 
        context.beginPath()
@@ -57,13 +68,20 @@ function draw () {
        context.lineTo(x,innerHeight)
        context.stroke()
 
-       requestAnimationFrame(draw)
+       context.beginPath()
+       context.moveTo(0, innerHeight)
+       context.lineTo(x,0)
+       context.stroke()
 
+       context.beginPath()
+       context.moveTo(innerWidth,innerHeight)
+       context.lineTo(x,0)
+       context.stroke()
+
+       requestAnimationFrame(draw)
+    }
     }
 }
-
-
-
 
 draw()
 

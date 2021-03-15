@@ -5,6 +5,10 @@ window.onload = function () {           // onload wrapper
 var canvas;                             // Global canvas object reference
 var context; 
 
+let width = innerWidth
+let height = innerHeight
+let iteration = 1
+
 // // Begin dynamic fulls screen canvas code
 
 sizeCanvas()                            // create initial canvas
@@ -38,25 +42,30 @@ function drawScreen() {  // wrapper that gets called on resize event
     g = 0
     b = 0
 
-width=window.innerWidth
-height=window.innerHeight
+
 
 function crazyLines () {
 
-    width -= .1
-    height -= .1
-    if (r<255) r+=.07
+    if (r<255) r+=.2
 
-    context.strokeStyle = `rgb(${r},${g},${b})`
-    x = Math.round(Math.random()*width)
-    y = Math.round(Math.random()*height)
-    dx = Math.round(Math.random()*width)
-    dy = Math.round(Math.random()*height)
+    width--
+    height--
+    iteration++
 
-    context.beginPath()
-    context.moveTo(x,y)
-    context.lineTo(dx,dy)
-    context.stroke()
+    for (let i = 0; i < 7; ++i) {
+
+        context.strokeStyle = `rgb(${r},${g},${b})`
+        x = Math.round(Math.random()*width)
+        y = Math.round(Math.random()*height)
+        dx = Math.round(Math.random()*width)
+        dy = Math.round(Math.random()*height)
+
+        context.beginPath()
+        context.moveTo(x,y)
+        context.lineTo(dx,dy)
+        context.stroke()
+
+    }
 
     requestAnimationFrame(crazyLines)
 }

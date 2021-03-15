@@ -38,15 +38,18 @@ function drawScreen() {  // wrapper that gets called on resize event
     g = 0
     b = 0
 
+    let width = innerWidth
+    let height = innerHeight
+
 function crazyLines () {
 
     if (r<255) r+=.1
 
     context.strokeStyle = `rgb(${r},${g},${b})`
-    x = Math.round(Math.random()*window.innerWidth)
-    y = Math.round(Math.random()*window.innerHeight)
-    dx = Math.round(Math.random()*window.innerWidth)
-    dy = Math.round(Math.random()*window.innerHeight)
+    x = Math.round(Math.random()*width)
+    y = Math.round(Math.random()*height)
+    dx = Math.round(Math.random()*width)
+    dy = Math.round(Math.random()*height)
 
     context.beginPath()
     context.moveTo(x,y)
