@@ -48,8 +48,8 @@ function crazyLines () {
 
     if (r<255) r+=.2
 
-    width--
-    height--
+    width = width -1.7
+    height = height -.8
     iteration++
 
     for (let i = 0; i < 7; ++i) {
