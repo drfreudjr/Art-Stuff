@@ -38,9 +38,9 @@ function drawScreen() {  // wrapper that gets called on resize event
 
     //  //  // Enter Page Specific Code here
 
-    r = 0
-    g = 0
-    b = 0
+    let r = 0
+    let g = 0
+    let b = 0
 
 
 
