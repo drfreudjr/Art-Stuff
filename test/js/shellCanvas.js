@@ -49,7 +49,7 @@ function crazyLines () {
     width = width +1.5
     height = height +.6
     iteration++
-    cyclesPerFrame = 100000
+    cyclesPerFrame = 50000
 
     for (let i = 0; i < cyclesPerFrame; ++i) {
         cyclesPerFrame=cyclesPerFrame- 2000
@@ -68,7 +68,7 @@ function crazyLines () {
         context.fillRect(dx,dy,dx,dy)
 
     }
-    // if (iteration < 600)
+    if (iteration < 1000)
         requestAnimationFrame(crazyLines)
 }
 
