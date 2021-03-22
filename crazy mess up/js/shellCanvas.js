@@ -68,7 +68,7 @@ function crazyLines () {
         context.fillRect(dx,dy,dx,dy)
 
     }
-    // if (iteration < 600)
+    if (iteration < 600)
         requestAnimationFrame(crazyLines)
 }
 
