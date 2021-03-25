@@ -46,10 +46,10 @@ function crazyLines () {
 
     if (r<255) r+=1
 
-    width = width +1.5
-    height = height +.6
+    // width = width +1.5
+    // height = height +.6
     iteration++
-    cyclesPerFrame = 50000
+    cyclesPerFrame = 100000
 
     for (let i = 0; i < cyclesPerFrame; ++i) {
         cyclesPerFrame=cyclesPerFrame- 2000
@@ -68,13 +68,13 @@ function crazyLines () {
         context.fillRect(dx,dy,dx,dy)
 
     }
-    if (iteration < 1000)
+    // if (iteration < 600)
         requestAnimationFrame(crazyLines)
 }
 
 
 setTimeout(crazyLines(),0)
-setTimeout(fadeOut(), 1000000)
+// setTimeout(fadeOut(), 1000000)
 
 function fadeOut() {
     context.strokeStyle = 'black'

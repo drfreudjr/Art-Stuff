@@ -46,8 +46,8 @@ function crazyLines () {
 
     if (r<255) r+=1
 
-    width = width +1.5
-    height = height +.6
+    // width = width +1.5
+    // height = height +.6
     iteration++
     cyclesPerFrame = 100000
 
@@ -74,15 +74,10 @@ function crazyLines () {
 
 
 setTimeout(crazyLines(),0)
-setTimeout(fadeOut(), 1000000)
 
 function fadeOut() {
     context.strokeStyle = 'black'
     context.fillRect(0,0,innerWidth, innerHeight)
 }
-
-
-
-cl('test')
 }   // end drawScreen wrapper
 }   // end onload wrapper
