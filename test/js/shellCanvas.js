@@ -34,31 +34,31 @@ function drawScreen() {  // wrapper that gets called on resize event
 
 let width = 0
 let height = 0
-let iteration = 1
-
+let iteration = 0
 let r = 0
 let g = 0
 let b = 0
 
+let multiplier = 1
+
 function crazyLines () {
     iteration++
-
-
     if (r<255) r+=1
 
-    // width = width +1.5
-    // height = height +.6
     iteration++
     cyclesPerFrame = 100000
 
     for (let i = 0; i < cyclesPerFrame; ++i) {
         cyclesPerFrame=cyclesPerFrame- 2000
 
+        let x = Math.random()
+        cl(x)
+
         context.strokeStyle = `rgb(${r},${g},${b})`
-        x = Math.round(Math.random()*width*2)
-        y = Math.round(Math.random()*height*2)
-        dx = Math.round(Math.random()*innerWidth-width*2)
-        dy = Math.round(Math.random()*innerHeight-height*2)
+        x = Math.round(Math.random()*width*multiplier)
+        y = Math.round(Math.random()*height*multiplier)
+        dx = Math.round(Math.random()*innerWidth-width*multiplier)
+        dy = Math.round(Math.random()*innerHeight-height*multiplier)
 
         context.beginPath()
         context.moveTo(x,y)
@@ -71,18 +71,7 @@ function crazyLines () {
     // if (iteration < 600)
         requestAnimationFrame(crazyLines)
 }
-
-
 setTimeout(crazyLines(),0)
-// setTimeout(fadeOut(), 1000000)
 
-function fadeOut() {
-    context.strokeStyle = 'black'
-    context.fillRect(0,0,innerWidth, innerHeight)
-}
-
-
-
-cl('test')
 }   // end drawScreen wrapper
 }   // end onload wrapper
