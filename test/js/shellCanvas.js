@@ -43,11 +43,11 @@ let b = 0
 
 function crazyLines () {
     iteration++
-    if (r<255) r+=1
+    if (r<255) r+=1 // otherwise dont bother ;)
 
     width = width +1.5
     height = height +.6
-    iteration++
+
     cyclesPerFrame = 100000
 
     for (let i = 0; i < cyclesPerFrame; ++i) {
@@ -64,7 +64,7 @@ function crazyLines () {
         context.lineTo(dx,dy)
         context.stroke()
     }
-    if (iteration < 400)
+    if (iteration < 210)
         requestAnimationFrame(crazyLines)
 }
 crazyLines()
