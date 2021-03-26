@@ -30,46 +30,43 @@ function sizeCanvas () {                // Create or resize
 }
 
 function drawScreen() {  // wrapper that gets called on resize event
+
     //  //  // Enter Page Specific Code here
 
 let width = 0
 let height = 0
 let iteration = 0
+
 let r = 0
 let g = 0
 let b = 0
-let nonLinear = 1
-
-context.strokeStyle = `rgb(${r},${g},${b})`
 
 function crazyLines () {
     iteration++
-    nonLinear++
-    cyclesPerFrame = 100000
-    for (let i = 0; i < cyclesPerFrame; ++i) {
-        cyclesPerFrame=cyclesPerFrame-nonLinear*500
+    if (r<255) r+=1
 
-        x = Math.round(Math.random()*width)
-        y = Math.round(Math.random()*height)
-        dx = Math.round(Math.random()*innerWidth-width)
-        dy = Math.round(Math.random()*innerHeight-height)
+    width = width +1.5
+    height = height +.6
+    iteration++
+    cyclesPerFrame = 100000
+
+    for (let i = 0; i < cyclesPerFrame; ++i) {
+        cyclesPerFrame=cyclesPerFrame- 500
+
+        context.strokeStyle = `rgb(${r},${g},${b})`
+        x = Math.round(Math.random()*width*2)
+        y = Math.round(Math.random()*height*2)
+        dx = Math.round(Math.random()*innerWidth-width*2)
+        dy = Math.round(Math.random()*innerHeight-height*2)
 
         context.beginPath()
         context.moveTo(x,y)
         context.lineTo(dx,dy)
         context.stroke()
-        context.strokeStyle = `rgb(${r+=10},${g},${b})`
-        context.fillRect(dx,dy,dx,dy)
-
-        context.beginPath()
-        context.moveTo(innerWidth,innerHeight)
-        context.lineTo(dx,dy)
-        context.stroke()
-        context.fillRect(dx,dy,dx,dy)
     }
+    if (iteration < 400)
         requestAnimationFrame(crazyLines)
 }
-setTimeout(crazyLines(),0)
-
+crazyLines()
 }   // end drawScreen wrapper
 }   // end onload wrapper
