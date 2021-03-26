@@ -36,6 +36,8 @@ function drawScreen() {  // wrapper that gets called on resize event
 
     //  //  // Enter Page Specific Code here
 
+// Explosion paradigm - reverse of bloodbath
+
 let width = 0
 let height = 0
 let iteration = 1

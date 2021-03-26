@@ -1,4 +1,5 @@
 const cl = console.log;
+
 window.onload = function () {           // onload wrapper
                                         // Global 2D context reference
 var canvas;                             // Global canvas object reference
@@ -33,40 +34,56 @@ function drawScreen() {  // wrapper that gets called on resize event
 
     //  //  // Enter Page Specific Code here
 
-let width = 0
-let height = 0
-let iteration = 0
+context.fillStyle = "blue"
+context.fillRect(0,0,innerWidth,innerHeight)
 
-let r = 0
-let g = 0
-let b = 0
 
-function crazyLines () {
-    iteration++
-    if (r<255) r+=1 // otherwise dont bother ;)
+document.body.style.backgroundColor = 'blue'
 
-    width = width +1.5
-    height = height +.6
+    r = 0
+    g = 0
+    b = 0
 
-    cyclesPerFrame = 100000
+interval = Math.round(window.innerWidth)/350
+x = 0
 
-    for (let i = 0; i < cyclesPerFrame; ++i) {
-        cyclesPerFrame=cyclesPerFrame- 500
+function draw () {
+     b -= 2*g
+     g -= 10/b
+     r -= 2
 
-        context.strokeStyle = `rgb(${r},${g},${b})`
-        x = Math.round(Math.random()*width*2)
-        y = Math.round(Math.random()*height*2)
-        dx = Math.round(Math.random()*innerWidth-width*2)
-        dy = Math.round(Math.random()*innerHeight-height*2)
+    document.body.style.backgroundColor = `rgb(${r},${g+b},${b})`
+    x +=interval
+    if (x<1400) {
+    for (i=0;i<1;++i) {
+       context.strokeStyle = `rgb(${r},${g},${b})`
 
-        context.beginPath()
-        context.moveTo(x,y)
-        context.lineTo(dx,dy)
-        context.stroke()
+       context.beginPath()
+       context.moveTo(0,0)
+       context.lineTo(x,innerHeight)
+       context.stroke()
+
+       context.beginPath()
+       context.moveTo(innerWidth,0)
+       context.lineTo(x,innerHeight)
+       context.stroke()
+
+       context.beginPath()
+       context.moveTo(0, innerHeight)
+       context.lineTo(x,0)
+       context.stroke()
+
+       context.beginPath()
+       context.moveTo(innerWidth,innerHeight)
+       context.lineTo(x,0)
+       context.stroke()
+
+       requestAnimationFrame(draw)
     }
-    if (iteration < 210)
-        requestAnimationFrame(crazyLines)
+    }
 }
-crazyLines()
+
+draw()
+
 }   // end drawScreen wrapper
 }   // end onload wrapper
