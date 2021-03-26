@@ -43,14 +43,11 @@ function drawScreen() {  // wrapper that gets called on resize event
     let b = 0
 
 function crazyLines () {
+    if (r<255) r+=4
 
-    if (r<255) r+=.2
-
-    width = width -1.7
-    height = height -.8
-    iteration++
-
-    for (let i = 0; i < 10; ++i) {
+    width = width -12
+    height = height -5
+    for (let i = 0; i < 60; ++i) {
 
         context.strokeStyle = `rgb(${r},${g},${b})`
         x = Math.round(Math.random()*width)
@@ -62,8 +59,10 @@ function crazyLines () {
         context.moveTo(x,y)
         context.lineTo(dx,dy)
         context.stroke()
+        cl('here')
     }
-    requestAnimationFrame(crazyLines)
+    if (width >0)
+        requestAnimationFrame(crazyLines)
 }
 crazyLines()
 

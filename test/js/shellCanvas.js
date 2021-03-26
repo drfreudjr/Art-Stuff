@@ -60,6 +60,12 @@ function crazyLines () {
         context.stroke()
         context.strokeStyle = `rgb(${r+=10},${g},${b})`
         context.fillRect(dx,dy,dx,dy)
+
+        context.beginPath()
+        context.moveTo(innerWidth,innerHeight)
+        context.lineTo(dx,dy)
+        context.stroke()
+        context.fillRect(dx,dy,dx,dy)
     }
         requestAnimationFrame(crazyLines)
 }

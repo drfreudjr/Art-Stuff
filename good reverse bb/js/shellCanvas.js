@@ -53,7 +53,7 @@ function crazyLines () {
     cyclesPerFrame = 100000
 
     for (let i = 0; i < cyclesPerFrame; ++i) {
-        cyclesPerFrame=cyclesPerFrame- 2000
+        cyclesPerFrame=cyclesPerFrame- 500
 
         context.strokeStyle = `rgb(${r},${g},${b})`
         x = Math.round(Math.random()*width*2)
@@ -66,7 +66,7 @@ function crazyLines () {
         context.lineTo(dx,dy)
         context.stroke()
     }
-    if (iteration < 600)
+    if (iteration < 400)
         requestAnimationFrame(crazyLines)
 }
 crazyLines()
