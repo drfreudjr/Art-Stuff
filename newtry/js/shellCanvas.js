@@ -55,17 +55,17 @@ function crazyLines () {
 
     context.strokeStyle = `rgb(${r},${g},${b})`
 
-    for (i=0; i<200; ++i){
+    for (i=0; i<25; ++i){
         context.beginPath()
-        context.moveTo(fib[x],0)
+        context.moveTo(fib[i],0)
         context.lineTo(0,innerHeight)
-        cl(fib[x])
+        cl(fib[i])
         context.stroke()
         cl(i)
     }
 
 
-    requestAnimationFrame(crazyLines)
+    // requestAnimationFrame(crazyLines)
 }
 crazyLines()
 
