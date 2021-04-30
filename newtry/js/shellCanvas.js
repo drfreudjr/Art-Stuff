@@ -38,9 +38,10 @@ function drawScreen() {  // wrapper that gets called on resize event
     let g = 0
     let b = 0
 
-    let xAxis = [0,1]   // seed fibonachi
+    let fib = [0,1]   // seed fibonachi
+    
     for (i=2; i < 200; ++i) {
-
+        fib[i] = fib[i-1] + fib[i-2]
     }
 
     let width = innerWidth
