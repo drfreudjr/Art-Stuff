@@ -1,4 +1,8 @@
 const cl = console.log;
+import { fontList } from './modules/fontList.js';
+import { dynamicFontSize } from './modules/dynamicFontSize.js';
+import { randomCharacterString } from './modules/randomCharacterString.js' // arg = length
+
 
 window.onload = function () {           // onload wrapper
                                         // Global 2D context reference
@@ -32,58 +36,80 @@ function sizeCanvas () {                // Create or resize
 
 function drawScreen() {  // wrapper that gets called on resize event
 
-    //  //  // Enter Page Specific Code here
+     //  // Enter Page Specific Code here
 
-context.fillStyle = "blue"
-context.fillRect(0,0,innerWidth,innerHeight)
+context.fillStyle = "yellow"
 
+let x = 0
+let y = 0
+function drawBox () {
 
-document.body.style.backgroundColor = 'blue'
-
-    r = 0
-    g = 0
-    b = 0
-
-interval = Math.round(window.innerWidth)/350
-x = 0
-
-function draw () {
-     b -= 2*g
-     g -= 10/b
-     r -= 2
-
-    document.body.style.backgroundColor = `rgb(${r},${g+b},${b})`
-    x +=interval
-    if (x<1400) {
-    for (i=0;i<1;++i) {
-       context.strokeStyle = `rgb(${r},${g},${b})`
-
-       context.beginPath()
-       context.moveTo(0,0)
-       context.lineTo(x,innerHeight)
-       context.stroke()
-
-       context.beginPath()
-       context.moveTo(innerWidth,0)
-       context.lineTo(x,innerHeight)
-       context.stroke()
-
-       context.beginPath()
-       context.moveTo(0, innerHeight)
-       context.lineTo(x,0)
-       context.stroke()
-
-       context.beginPath()
-       context.moveTo(innerWidth,innerHeight)
-       context.lineTo(x,0)
-       context.stroke()
-
-       requestAnimationFrame(draw)
-    }
-    }
+    context.beginPath()
+    context.moveTo(x,y)
+    context.lineTo(innerWidth-x, y)
+    context.lineTo(innerWidth-x,innerHeight-y)
+    context.lineTo(x,innerHeight-y)
+    context.lineTo(x,y)
+    context.stroke()
+    // setTimeout (drawBox, 0)
 }
 
-draw()
+function squeezeOut() {
+    ++x
+    ++y
+    drawBox()
+    if (y<innerHeight/2)
+    requestAnimationFrame(drawBox)
+}
+
+squeezeOut()
+
+cl(fontList)
+
+if (y < innerHeight/2)
+setTimeout(function() {
+    drawBox() 
+    requestAnimationFrame(drawBox)
+    }, 1000 / 60)
+
+
+
+
+
+
+
+
+// const global = {
+//     name : 'Jack Wilcox',
+//     fontSize : 14,
+//     eachLetter : [{}], // create array of objects for each letter
+// }
+
+// printNameAnimation()
+
+// function printNameAnimation() {
+
+//         var element = document.getElementById("name")
+//         var newTextNode = document.createTextNode('')
+//         var nameEl = document.createElement('span')
+//         element.appendChild(nameEl)
+
+//     let initialDelay = 10
+//     function upDateAnimation () {
+
+//         let x = randomCharacterString(global.name.length)
+//         nameEl.innerText = x
+//         window.requestAnimationFrame(upDateAnimation)
+//         // setTimeout(printNameAnimation, 10)       
+//     }
+
+//     window.requestAnimationFrame(upDateAnimation)
+// }
+
+
+
+
+
 
 }   // end drawScreen wrapper
 }   // end onload wrapper
