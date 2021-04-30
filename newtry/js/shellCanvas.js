@@ -53,13 +53,14 @@ function crazyLines () {
 
     if (r<255) r+=.1
 
-    context.strokeStyle = `rgb(${r},${g},${b})`
+    // context.strokeStyle = `rgb(${r},${g},${b})`
+    context.strokeStyle = "blue"
 
     for (i=0; i<25; ++i){
-        // context.beginPath()
-        // context.moveTo(fib[i],0)
-        // context.lineTo(0,innerHeight)
-        // context.stroke()
+        context.beginPath()
+        context.moveTo(fib[i],0)
+        context.lineTo(0,innerHeight)
+        context.stroke()
 
         context.beginPath()
         context.moveTo(innerWidth,0)
