@@ -34,15 +34,17 @@ function drawScreen() {  // wrapper that gets called on resize event
 
     //  //  // Enter Page Specific Code here
 
-    let r = 0
-    let g = 0
-    let b = 0
+    let r = 100
+    let g = 100
+    let b = 100
 
     let fib = [0,1]   // seed fibonachi
-    
+
     for (i=2; i < 200; ++i) {
         fib[i] = fib[i-1] + fib[i-2]
     }
+
+    cl(fib)
 
     let width = innerWidth
     let height = innerHeight
@@ -52,19 +54,18 @@ function crazyLines () {
     if (r<255) r+=.1
 
     context.strokeStyle = `rgb(${r},${g},${b})`
-    x = Math.round(Math.random()*width)
-    y = Math.round(Math.random()*height)
-    dx = Math.round(Math.random()*width)
-    dy = Math.round(Math.random()*height)
 
-    context.beginPath()
-    context.moveTo(x,y)
-    context.lineTo(dx,dy)
-    context.stroke()
-
-    if (r<55) {
-        requestAnimationFrame(crazyLines)
+    for (i=0; i<200; ++i){
+        context.beginPath()
+        context.moveTo(fib[x],0)
+        context.lineTo(0,innerHeight)
+        cl(fib[x])
+        context.stroke()
+        cl(i)
     }
+
+
+    requestAnimationFrame(crazyLines)
 }
 crazyLines()
 
